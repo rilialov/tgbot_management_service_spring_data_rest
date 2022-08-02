@@ -11,6 +11,7 @@
     <groupId>tgbot</groupId>
     <artifactId>management_service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>tgbot_management_service_spring_data_rest</name>
     <description>tgbot_management_service_spring_data_rest</description>
     <properties>
@@ -42,10 +43,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
 
             <plugin>
                 <groupId>org.flywaydb</groupId>
@@ -54,11 +51,26 @@
                 <configuration>
                     <user>tgbot_m_admin</user>
                     <password>password</password>
-                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <url>jdbc:postgresql://10.77.88.12:5432/postgres</url>
                     <schemas>
                         <schema>tgbot_management</schema>
                     </schemas>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>tgbot.management_service.TgbotManagementServiceSpringDataRestApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
